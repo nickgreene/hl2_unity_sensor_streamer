@@ -103,16 +103,18 @@ The naming of things is inconsistent throughout the code. In general:
 
 # Build Instructions
 
-## Visual Studio 2019 Installation Details
+## Step 1: Build .DLL
+
+### Visual Studio 2019 Installation Details
 This was tested with Visual Studio 2019 with the following Installation configuration:
 ![image](media/Visual_Studio_Installation_Details.png)
 
-## Visual Studio Build DLL
+### Visual Studio Build DLL
 You should open `HL2RmStreamUnityPlugin/HL2RmStreamUnityPlugin.sln` and
 make sure Visual Studio is configured for `Release` and `ARM64`. Then press
 `Build->Build Solution`
 
-## Visual Studio Build Output
+### Visual Studio Build Output
 The Visual Studio Solution for `HL2RmStreamUnityPlugin` is configured to output
 the appropriate .DLL into the Unity project upon building:
 ![image](media/visual_studio_output.PNG)
@@ -124,8 +126,28 @@ following up to date files:
 
 if not, you should copy them into this location manually
 
-# Unity Version
+## Step 2: Build Unity Project
+### Unity Version
 The version of Unity this was tested with is `2019.4.31f1`
 
+### Unity Project Description
 This Unity Project is not configured to display AR content. It is an
-empty scene. While running, the hololens will show a solid white display. The `StartStreamer.cs` script is the entry point to the .DLL
+empty scene. While running, the hololens will show a solid white display. The
+`StartStreamer.cs` script is the entry point to the .DLL
+
+### Unity Build
+In Unity go to `File->Build Settings` and ensure that the settings are the same
+as in this image:
+
+![image](media/unity_build_settings.PNG)
+
+Then press build. Create a new folder to build to.
+
+When the unity build is finished, open the resulting `.sln` file in Visual
+studio. Make sure to configure Visual Studio to `Release` and `ARM64`. If the
+Hololens is plugged in via a USB cable, choose `Device`.
+
+Finally chose `Build->Deploy`
+
+
+When it finishes, you should see the app on the Hololens
